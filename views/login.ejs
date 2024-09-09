@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      class="flex justify-center align justify-items-center items-center h-screen"
+    >
+      <form
+        action="/login"
+        method="post"
+        class="border p-6 rounded-lg w-[350px] shadow-md"
+      >
+        <div class="text-4xl text-purple-700 font-bold mb-4 text-center">
+          SosMed
+        </div>
+        <div class="mb-4">
+          <div class="mb-2">
+            <label for="email" class="text-purple-700">Email</label>
+          </div>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Email"
+            class="border border-purple-700 py-1 px-4 rounded w-full"
+          />
+        </div>
+
+        <div class="mb-8">
+          <div class="mb-2">
+            <label for="password" class="text-purple-700">Password</label>
+          </div>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            class="border border-purple-700 py-1 px-4 rounded w-full"
+          />
+        </div>
+
+        <div class="mb-4">
+          <button
+            type="submit"
+            class="rounded bg-purple-700 text-white py-1 px-4 w-full"
+          >
+            LOGIN
+          </button>
+        </div>
+
+        <div class="text-center">
+          Don't have account?
+          <a href="/register" class="text-purple-700">Register</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

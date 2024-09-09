@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      class="flex justify-center align justify-items-center items-center h-screen"
+    >
+      <form
+        action="/register"
+        method="post"
+        class="border p-6 rounded-lg w-[350px] shadow-md"
+      >
+        <div class="text-4xl text-purple-700 font-bold mb-4 text-center">
+          Register
+        </div>
+
+        <div class="mb-4">
+          <div class="mb-2">
+            <label for="name" class="text-purple-700">Name</label>
+          </div>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Name"
+            class="border border-purple-700 py-1 px-4 rounded w-full"
+          />
+        </div>
+
+        <div class="mb-4">
+          <div class="mb-2">
+            <label for="phone" class="text-purple-700">Phone</label>
+          </div>
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            placeholder="Phone"
+            class="border border-purple-700 py-1 px-4 rounded w-full"
+          />
+        </div>
+
+        <div class="mb-4">
+          <div class="mb-2">
+            <label for="email" class="text-purple-700">Email</label>
+          </div>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Email"
+            class="border border-purple-700 py-1 px-4 rounded w-full"
+          />
+        </div>
+
+        <div class="mb-4">
+          <div class="mb-2">
+            <label for="password" class="text-purple-700">Password</label>
+          </div>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            class="border border-purple-700 py-1 px-4 rounded w-full"
+          />
+        </div>
+
+        <div class="mt-8 mb-4">
+          <button
+            type="submit"
+            class="rounded bg-purple-700 text-white py-1 px-4 w-full"
+          >
+            REGISTER
+          </button>
+        </div>
+
+        <div class="text-center">
+          Already have account?
+          <a href="/login" class="text-purple-700">Login</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
