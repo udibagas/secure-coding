@@ -1,0 +1,13 @@
+- Authentication
+  - hashing password
+  - encrypt jwt
+- Error handling
+- Authorization
+- Validation
+  - middleware (express-validator)
+  - model
+  - file
+- SQL Parameterization
+- Secure configuration
+  - .env
+  - package management (npm audit)
