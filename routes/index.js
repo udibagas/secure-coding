@@ -1,11 +1,9 @@
 var express = require("express");
+const { index } = require("../controllers/posts.controller");
 var router = express.Router();
 
-/* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
-});
-
+router.get("/", index);
 router.use(require("./auth"));
+router.use("/posts", require("./posts"));
 
 module.exports = router;

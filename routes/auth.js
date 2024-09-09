@@ -1,7 +1,18 @@
 var express = require("express");
-const { login, register } = require("../controllers/auth.controller");
+const {
+  login,
+  register,
+  showLoginForm,
+  showRegisterForm,
+  logout,
+} = require("../controllers/auth.controller");
 var router = express.Router();
 
-router.get("/login", login).get("/register", register);
+router
+  .post("/login", login)
+  .post("/register", register)
+  .get("/login", showLoginForm)
+  .get("/register", showRegisterForm)
+  .get("/logout", logout);
 
 module.exports = router;
