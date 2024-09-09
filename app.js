@@ -9,7 +9,7 @@ var app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-// Prevent XSS
+// Prevent XSS (Add CSP Header)
 app.use(function (req, res, next) {
   res.setHeader("Content-Security-Policy", "default-src 'self' ");
   next();

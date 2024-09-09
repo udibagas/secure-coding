@@ -1,8 +1,7 @@
 var express = require("express");
-const { create, index } = require("../controllers/posts.controller");
+const { create, index, remove } = require("../controllers/posts.controller");
 var router = express.Router();
 
-router.get("", index);
-router.post("/", create);
+router.get("", index).post("/", create).get("/delete/:id", remove);
 
 module.exports = router;

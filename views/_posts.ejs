@@ -1,11 +1,21 @@
 <% posts.forEach(el => { %>
 <div class="border-t my-4 py-4">
   <div class="flex items-center justify-between mb-4">
-    <div class="font-bold text-lg text-purple-700"><%= el.User.name %></div>
+    <div class="font-bold text-purple-700"><%= el.User.name %></div>
     <div class="text-sm text-slate-400">
       <%= moment(el.createdAt).fromNow() %>
     </div>
   </div>
-  <div class="text-slate-500"><%- el.body.replaceAll('\n', '<br />') %></div>
+  <div class="text-slate-500">
+    <!-- <%= el.body %> -->
+    <%- el.body.replaceAll('\n', '<br />') %>
+  </div>
+
+  <a
+    href="/posts/delete/<%= el.id %>"
+    class="mt-4 text-red-700 border border-dashed border-red-700 block w-full text-center rounded py-1 hover:bg-red-700 hover:text-white"
+  >
+    DELETE
+  </a>
 </div>
 <% }) %>

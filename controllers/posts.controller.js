@@ -21,3 +21,13 @@ exports.create = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.remove = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    await Post.destroy({ where: { id } });
+    res.redirect("/");
+  } catch (error) {
+    next(error);
+  }
+};
