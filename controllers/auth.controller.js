@@ -54,6 +54,11 @@ exports.register = async (req, res, next) => {
     if (error.name == "SequelizeValidationError") {
       const message = error.errors.map((e) => e.message).join(", ");
       return res.status(400).redirect(`/register?message=${message}`);
+      // for REST API
+      // return res.status(400).json({
+      //   message: "Validation error",
+      //   errors: error.errors.map((e) => e.message),
+      // });
     }
 
     next(error);
