@@ -6,16 +6,14 @@
       <%= moment(el.createdAt).fromNow() %>
     </div>
   </div>
-  <div class="text-slate-500">
-    <!-- <%= el.body %> -->
-    <%- el.body.replaceAll('\n', '<br />') %>
-  </div>
+  <div class="text-slate-500"><%- el.body.replaceAll('\n', '<br />') %></div>
 
+  <% if (user && el.UserId == user.id) { %>
   <a
-    href="/posts/delete/<%= el.id %>"
+    href="/posts/delete/<%- el.id %>"
     class="mt-4 text-red-700 border border-dashed border-red-700 block w-full text-center rounded py-1 hover:bg-red-700 hover:text-white"
   >
     DELETE
   </a>
 </div>
-<% }) %>
+<% } %> <% }) %>

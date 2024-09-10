@@ -1,13 +1,20 @@
 - Authentication
-  - hashing password
+  - [v] hashing password
   - encrypt jwt
-- Error handling
-- Authorization
+- [v] Error handling
+  - Client (4xx) => kasih tau detail errornya
+  - Server (5xx)
+    - Jangan kasih tau detail
+    - Internal Server Error
+    - Jangan tampilkan stack
+    - Jangan tampilkan env
+    - set NODE_ENV=production
+- [v] Authorization
 - Validation
-  - middleware (express-validator)
-  - model
+  - [v] middleware (express-validator)
+  - [v] model (sequelize validation)
   - file
-- SQL Parameterization
+- [v] SQL Parameterization
 - Secure configuration
   - .env
   - package management (npm audit)

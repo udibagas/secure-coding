@@ -6,12 +6,12 @@ const {
   showRegisterForm,
   logout,
 } = require("../controllers/auth.controller");
-const loginValidation = require("../validations/login.validation");
-const validationMiddleware = require("../middlewares/validation.middleware");
 var router = express.Router();
+const { body } = require("express-validator");
+const loginValidation = require("../validations/login.validation");
 
 router
-  .post("/login", loginValidation, validationMiddleware, login)
+  .post("/login", loginValidation, login)
   .post("/register", register)
   .get("/login", showLoginForm)
   .get("/register", showRegisterForm)

@@ -19,9 +19,9 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   // Prevent CSS (sanitize input)
-  Post.beforeCreate((instance) => {
-    instance.body = escapeHTML(instance.body);
-  });
+  // Post.beforeCreate((instance) => {
+  //   instance.body = escapeHTML(instance.body);
+  // });
 
   return Post;
 };
