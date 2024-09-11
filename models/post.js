@@ -1,6 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
-const { escapeHTML } = require("../helpers/escapeHtml");
+
 module.exports = (sequelize, DataTypes) => {
   class Post extends Model {
     static associate(models) {
@@ -17,11 +17,6 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "Post",
     }
   );
-
-  // Prevent CSS (sanitize input)
-  // Post.beforeCreate((instance) => {
-  //   instance.body = escapeHTML(instance.body);
-  // });
 
   return Post;
 };

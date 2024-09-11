@@ -1,13 +1,47 @@
 var express = require("express");
-const { create, index, remove } = require("../controllers/posts.controller");
+const { create, remove } = require("../controllers/posts.controller");
+const postValidation = require("../validations/post.validation");
+const csrfProtection = require("../middlewares/csrf.middleware");
+// const { isAdmin } = require("../middlewares/isAdmin.middleware");
 const multer = require("multer");
-const { isAdmin } = require("../middlewares/isAdmin.middleware");
+const path = require("path");
+const { Sanitizer } = require("sanitize");
+const sanitizer = new Sanitizer();
+
+const storage = multer.diskStorage({
+  destination: "uploads/",
+  filename: function (res, file, cb) {
+    const sanitizedFilename = sanitizer.str(file.originalname);
+    cb(null, Date.now() + sanitizedFilename);
+  },
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 1000000 }, // 1MB
+  fileFilter: function (req, file, cb) {
+    const filetypes = /jpeg|jpg|png|gif/;
+    const extname = filetypes.test(
+      path.extname(file.originalname).toLowerCase()
+    ); // boolean
+
+    const mimetype = filetypes.test(file.mimetype);
+
+    if (extname && mimetype) {
+      cb(null, true);
+    } else {
+      cb("Error: only images allowed");
+    }
+  },
+});
+
 var router = express.Router();
-const upload = multer({ dest: "uploads/" });
 
 router
-  .get("", index)
-  .post("/", upload.single("image"), create)
-  .get("/delete/:id", isAdmin, remove);
+  .get("", (req, res) => {
+    res.redirect("/");
+  })
+  .post("/", upload.single("image"), postValidation, csrfProtection, create)
+  .get("/delete/:id", remove);
 
 module.exports = router;

@@ -1,10 +1,23 @@
-<form action="/posts" method="post" class="w-full mb-10">
+<form
+  action="/posts"
+  method="post"
+  class="w-full mb-10"
+  enctype="multipart/form-data"
+>
+  <% if (message) { %>
+  <div class="text-red-700 my-4 text-center"><%= message %></div>
+  <% } %>
+
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+
   <textarea
     name="body"
     id="body"
     class="border border-purple-700 rounded p-2 w-full mb-3"
     placeholder="What do you want to share today?"
   ></textarea>
+
+  <input type="file" id="image" name="image" class="mb-4" />
 
   <button class="bg-purple-700 text-white py-1 px-2 rounded w-full">
     SHARE
