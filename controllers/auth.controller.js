@@ -48,7 +48,7 @@ exports.login = async (req, res, next) => {
 
 exports.register = async (req, res, next) => {
   try {
-    const user = await User.create(req.body);
+    await User.create(req.body);
     res.redirect("/login");
   } catch (error) {
     if (error.name == "SequelizeValidationError") {

@@ -1,8 +1,8 @@
-var express = require("express");
+const express = require("express");
 const { index } = require("../controllers/posts.controller");
 const { auth } = require("../middlewares/auth.middleware");
 const csrfProtection = require("../middlewares/csrf.middleware");
-var router = express.Router();
+const router = express.Router();
 
 router.get("/csrf", (req, res) => {
   res.render("csrf");

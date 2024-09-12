@@ -1,4 +1,4 @@
-var express = require("express");
+const express = require("express");
 const {
   login,
   register,
@@ -6,7 +6,7 @@ const {
   showRegisterForm,
   logout,
 } = require("../controllers/auth.controller");
-var router = express.Router();
+const router = express.Router();
 const { body } = require("express-validator");
 const loginValidation = require("../validations/login.validation");
 

@@ -4,24 +4,20 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
-var csrf = require("csurf");
+const helmet = require("helmet");
 const { sequelize } = require("./models");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const myStore = new SequelizeStore({ db: sequelize });
 myStore.sync();
 
 const app = express();
+app.disable("x-powered-by");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-// Prevent XSS (Add CSP Header)
-app.use(function (req, res, next) {
-  res.setHeader("Content-Security-Policy", "default-src 'self' ");
-  next();
-});
-
+app.use(helmet());
 app.use(cookieParser());
 
 app.use(

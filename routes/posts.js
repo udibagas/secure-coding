@@ -1,8 +1,8 @@
-var express = require("express");
+const express = require("express");
 const { create, remove } = require("../controllers/posts.controller");
 const postValidation = require("../validations/post.validation");
 const csrfProtection = require("../middlewares/csrf.middleware");
-// const { isAdmin } = require("../middlewares/isAdmin.middleware");
+const { isAdmin } = require("../middlewares/isAdmin.middleware");
 const multer = require("multer");
 const path = require("path");
 const { Sanitizer } = require("sanitize");
@@ -35,13 +35,13 @@ const upload = multer({
   },
 });
 
-var router = express.Router();
+const router = express.Router();
 
 router
   .get("", (req, res) => {
     res.redirect("/");
   })
   .post("/", upload.single("image"), postValidation, csrfProtection, create)
-  .get("/delete/:id", remove);
+  .get("/delete/:id", isAdmin, remove);
 
 module.exports = router;
