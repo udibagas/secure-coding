@@ -1,6 +1,6 @@
 const crypto = require("crypto");
 
-const algorithm = "aes-256-cbc";
+const algorithm = "AES-256-GCM";
 const key = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
 
