@@ -8,16 +8,14 @@ const path = require("path");
 const { Sanitizer } = require("sanitize");
 const sanitizer = new Sanitizer();
 
-const storage = multer.diskStorage({
-  destination: "uploads/",
-  filename: function (res, file, cb) {
-    const sanitizedFilename = sanitizer.str(file.originalname);
-    cb(null, Date.now() + sanitizedFilename);
-  },
-});
-
 const upload = multer({
-  storage: storage,
+  storage: multer.diskStorage({
+    destination: "uploads/",
+    filename: function (res, file, cb) {
+      const sanitizedFilename = sanitizer.str(file.originalname);
+      cb(null, Date.now() + sanitizedFilename);
+    },
+  }),
   limits: { fileSize: 1000000 }, // 1MB
   fileFilter: function (req, file, cb) {
     const filetypes = /jpeg|jpg|png|gif/;
